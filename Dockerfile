@@ -20,4 +20,4 @@ COPY . /usr/src/app/
 #Expose port
 EXPOSE 8080
 
-CMD ["npm","start"]
+RUN npm run dev
