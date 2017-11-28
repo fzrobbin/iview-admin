@@ -1,5 +1,5 @@
 # Dockerfile.alpine
-FROM index.tenxcloud.com/docker_library/alpine:edge
+FROM daocloud.io/nginx
 
 # Install Node.js apk
 RUN echo '@edge http://nl.alpinelinux.org/alpine/edge/main' >>/etc/apk/repositories
@@ -20,4 +20,5 @@ COPY . /usr/src/app/
 #Expose port
 EXPOSE 8080
 
-RUN npm run dev
+RUN npm run build
+COPY dist /usr/share/nginx/html
