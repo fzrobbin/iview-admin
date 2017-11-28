@@ -1,10 +1,10 @@
 # Dockerfile.alpine
-FROM daocloud.io/nginx
+FROM index.tenxcloud.com/docker_library/alpine:edge
 
 # Install Node.js apk
 RUN echo '@edge http://nl.alpinelinux.org/alpine/edge/main' >>/etc/apk/repositories
 CMD ["/bin/sh -c","apk update && apk upgrade"]
-RUN apk add --no-cache nodejs-lts@edge
+RUN apk add --no-cache nodejs-lts@edge && apk add --update nginx
 
 # Create App directory
 RUN mkdir -p /usr/src/app
@@ -22,3 +22,4 @@ EXPOSE 8080
 
 RUN npm run build
 COPY dist /usr/share/nginx/html
+CMD ["nginx", "-g", "daemon off;"]
