@@ -3,7 +3,7 @@ FROM index.tenxcloud.com/docker_library/alpine:edge
 
 # Install Node.js apk
 RUN echo '@edge http://nl.alpinelinux.org/alpine/edge/main' >>/etc/apk/repositories
-RUN apk update && apk upgrade
+RUN '/bin/bash -c apk update && apk upgrade'
 RUN apk add --no-cache nodejs-lts@edge
 
 # Create App directory
